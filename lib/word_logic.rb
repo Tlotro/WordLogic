@@ -17,6 +17,7 @@ module WordLogic
     end
     for i in 1..chars.length
       if (compchars.include?(chars[i]))
+        compchars[i] = ' '
         res[i] = 1
     end
   end
