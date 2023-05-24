@@ -19,7 +19,9 @@ module WordLogic
       if (compchars.include?(chars[i]))
         compchars[i] = ' '
         res[i] = 1
+      end
     end
+    res
   end
   
   class Error < StandardError; end
