@@ -3,18 +3,22 @@
 require_relative "word_logic/version"
 
 module WordLogic
-  def getwords(length); end
+  def get_words(length); end
 
-  def compareWords(chars, compchars)
+  def is_word(compchars)
+    File.foreach("users.txt") { |line| if (compchars == line) return true end }
+  end
+
+  def compare_words(chars, compchars)
     compcharsres = compchars.clone
     compchars.each { |e| compcharsres << e.dup }
     res = Array(chars.length)
-    checkGreen(chars, compcharsres, res)
-    checkYellow(chars, compcharsres, res)
+    check_green(chars, compcharsres, res)
+    check_yellow(chars, compcharsres, res)
     res
   end
 
-  def checkGreen(chars, compchars, res)
+  def check_green(chars, compchars, res)
     for i in 1..chars.length
       if chars[i] == compchars[i]
         compchars[i] = " "
@@ -23,9 +27,9 @@ module WordLogic
       end
   end
 
-  def checkYellow(chars, compchars, res)
+  def check_yellow(chars, compchars, res)
     for i in 1..chars.length
-      if ompcharsres.include?(chars[i])
+      if compchars.include?(chars[i])
         compchars[i] = " "
         res[i] = 2
       end
