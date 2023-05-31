@@ -35,32 +35,6 @@ module WordLogic
       end
       end
   end
-
-  def chekWord(res)
-    letter = 0
-    for i in 1..res.length
-      if (res[i] == 2)
-        letter +=1
-      end
-    end
-    return letter
-  end
-
-  def chekResult(try, chars)
-    while (try > 0)
-      compareWords(chars, compchars)
-      try -= 1
-      letter = chekWord(res)
-      if (letter == chars.length)
-        puts "Ответ получен"
-        break
-      elsif (try == 0)
-        puts "Попытки закончились"
-      else
-        puts "Ответ не получен, но есть еще попытки"
-      end
-    end
-  end
   
   class Error < StandardError; end
   # Your code goes here...
