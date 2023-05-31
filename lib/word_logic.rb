@@ -3,6 +3,10 @@
 require_relative "word_logic/version"
 
 module WordLogic
+
+  class Error < StandardError; end
+  # Your code goes here...
+  
   def getwords(length); end
 
   wordLength = 6
@@ -28,7 +32,7 @@ module WordLogic
 
   def checkYellow(chars, compchars, res)
     for i in 1..chars.length
-      if ompcharsres.include?(chars[i])
+      if compcharsres.include?(chars[i])
         compchars[i] = " "
         res[i] = 1
       end
@@ -39,11 +43,17 @@ module WordLogic
     theWord = word
   end
   
-  def in_out()
-    inWord = gets
-    if (inWord.each {|s| s <= 'z' and s>='a'} and inWord.length == wordLength)
+  def in_out(inWord)
+    yes = true
+    inWord.each_char do |s| 
+      if s >= 'z' or s<='a'
+        yes = false 
+        break 
+      end
+    end
+    if (yes and inWord.length == wordLength)
       res = compareWords(inWord,theWord)
-      res.each {|i|
+      res.each do |i|
         if i==2
           print 'G'  
         else if i==1
@@ -51,11 +61,11 @@ module WordLogic
         else
           print 'N'
         end
-      }
+      end
       puts ''
     end
+    res
   end
   
-  class Error < StandardError; end
-  # Your code goes here...
+  
 end
