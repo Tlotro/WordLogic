@@ -3,10 +3,16 @@
 require_relative "word_logic/version"
 
 module WordLogic
+
+  class Error < StandardError; end
+  # Your code goes here...
+  
   def get_words(length); end
 
   def is_word(compchars)
-    File.foreach("users.txt") { |line| if (compchars == line) return true end }
+    File.foreach("words.txt") do |line| 
+      return true if (compchars == line)
+    end
   end
 
   def compare_words(chars, compchars)
@@ -24,7 +30,7 @@ module WordLogic
         compchars[i] = " "
         res[i] = 2
       end
-      end
+    end
   end
 
   def check_yellow(chars, compchars, res)
@@ -33,9 +39,7 @@ module WordLogic
         compchars[i] = " "
         res[i] = 2
       end
-      end
+    end
   end
   
-  class Error < StandardError; end
-  # Your code goes here...
 end
