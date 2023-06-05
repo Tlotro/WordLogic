@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email = ["misha.pletneow@yandex.ru"]
 
   spec.summary = "Logic for a wordle game"
-  #spec.description = "TODO: Write a longer description or delete this line."
+  spec.description = "Logic for the game of wordl, a game where one must guess a word in multiple tries"
   spec.homepage = "https://github.com/Tlotro/WordLogic"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.6.0"
