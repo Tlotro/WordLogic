@@ -19,7 +19,55 @@ class TestWordLogic < Minitest::Test
     assert compare_words("cac", "aaa") == [0, 2, 0]
   end
 
-  def test_it_does_something_useful
-    assert true
+  def test_it_recognises_words
+    assert word?("хозяйка")
+    assert word?("утверждать")
+    assert word?("тоска")
+    assert word?("каркас")
+    assert word?("вселенная")
+    assert word?("похвалить")
+    assert word?("раздавить")
+    assert word?("спустить")
+    assert word?("спирт")
+    assert word?("удержать")
+  end
+
+  def test_no_false_positive
+    assert !word?("хозяка")
+    assert !word?("утвеждать")
+    assert !word?("тоса")
+    assert !word?("карас")
+    assert !word?("вселеная")
+    assert !word?("повалить")
+    assert !word?("раздаить")
+    assert !word?("сустить")
+    assert !word?("пирт")
+    assert !word?("удежать")
+  end
+
+  def test_it_recognises_words_by_lines
+    assert word_by_l?("хозяйка")
+    assert word_by_l?("утверждать")
+    assert word_by_l?("тоска")
+    assert word_by_l?("каркас")
+    assert word_by_l?("вселенная")
+    assert word_by_l?("похвалить")
+    assert word_by_l?("раздавить")
+    assert word_by_l?("спустить")
+    assert word_by_l?("спирт")
+    assert word_by_l?("удержать")
+  end
+    
+  def test_no_false_positive_by_lines
+    assert !word_by_l?("хозяка")
+    assert !word_by_l?("утвеждать")
+    assert !word_by_l?("тоса")
+    assert !word_by_l?("карас")
+    assert !word_by_l?("вселеная")
+    assert !word_by_l?("повалить")
+    assert !word_by_l?("раздаить")
+    assert !word_by_l?("сустить")
+    assert !word_by_l?("пирт")
+    assert !word_by_l?("удежать")
   end
 end

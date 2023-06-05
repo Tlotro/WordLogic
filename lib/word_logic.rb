@@ -13,7 +13,7 @@ module WordLogic
 
   # Requires optimization of the database
   def pick_random_word_by_l(length)
-    File.readlines("words#{length}.txt").sample
+    File.readlines("words#{length}.txt").sample if File.exist?("words#{length}.txt")
   end
 
   # splits the main file into smaller files for each length
@@ -33,15 +33,21 @@ module WordLogic
   def get_words(length); end
 
   def word_by_l?(compchars)
-    File.foreach("words#{compchars.length}.txt") do |line|
-      return true if compchars == line
+    res = false
+    if File.exist?("words#{compchars.length}.txt")
+      File.foreach("words#{compchars.length}.txt") do |line|
+        res = true if compchars == line[0..-3]
+      end
     end
+    res
   end
 
   def word?(compchars)
+    res = false
     File.foreach("words.txt") do |line|
-      return true if compchars == line
+      res = true if compchars == line[0..-3]
     end
+    res
   end
 
   def compare_words(chars, compchars)
