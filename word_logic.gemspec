@@ -5,7 +5,7 @@ require_relative "lib/word_logic/version"
 Gem::Specification.new do |spec|
   spec.name = "word_logic"
   spec.version = WordLogic::VERSION
-  spec.authors = ["Pletnev Michail", "Tkalich Alexandra", "Makeev Timofey"]
+  spec.authors = ["Pletnev Michail", "Tkalich Alexandra", "Makeev Timofey", "Pustovoy Marat"]
   spec.email = ["misha.pletneow@yandex.ru"]
 
   spec.summary = "Logic for a wordle game"
