@@ -57,7 +57,7 @@ class TestWordLogic < Minitest::Test
     assert word_by_l?("спирт")
     assert word_by_l?("удержать")
   end
-    
+
   def test_no_false_positive_by_lines
     assert !word_by_l?("хозяка")
     assert !word_by_l?("утвеждать")
@@ -69,5 +69,13 @@ class TestWordLogic < Minitest::Test
     assert !word_by_l?("сустить")
     assert !word_by_l?("пирт")
     assert !word_by_l?("удежать")
+  end
+
+  def test_input_and_output
+    set_word("хозяйка")
+    assert in_out("абрикос") == [1, 0, 0, 0, 1, 1, 0]
+    assert in_out("бутылка") == [0, 0, 0, 0, 0, 2, 2]
+    set_word("спустить")
+    assert in_out("спустить") == [2, 2, 2, 2, 2, 2, 2, 2]
   end
 end

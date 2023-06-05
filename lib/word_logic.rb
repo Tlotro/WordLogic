@@ -76,4 +76,62 @@ module WordLogic
       end
     end
   end
+
+  @@the_word = ""
+  @@tries
+
+  def set_word(word)
+    @@the_word = word
+    @@tries = word.length + 1
+  end
+
+  def set_random_word
+    set_word(pick_random_word)
+  end  
+
+  def set_random_word_by_l(len)
+    set_word(pick_random_word_by_l(len))
+  end  
+
+  def word
+    @@the_word
+  end
+
+  def word_length
+    @@the_word.length
+  end
+
+  def tries
+    @@tries
+  end
+
+  def in_out(inword)
+    res = compare_words(inword, @@the_word)
+    if word_by_l?(inword) && inword.length == @@the_word.length
+      @@tries -= 1
+      win = true
+      res.each do |i|
+        case i
+        when 2
+          print "G"
+        when 1
+          print "Y"
+          win = false
+        else
+          print "N"
+          win = false
+        end
+      end
+      puts " #{tries}"
+    else
+      puts "not a proper word"
+    end
+    
+    if win
+      puts "Congratulations, you win"
+    elsif @@tries.zero?
+      puts "Out of tries"
+    end
+    res
+  end
 end
